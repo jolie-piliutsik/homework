@@ -11,8 +11,8 @@ public class Main {
         System.out.println("В объекте №2 секунд: " + time2.calculateSeconds());
 
         //сравнение 2 объектов по количеству секунд
-        boolean compareTwoObjects = time1.calculateSeconds() > time2.calculateSeconds();
-        System.out.println("Количество секунд в объекте №1 больше, чем в объекте №2: " + compareTwoObjects);
+        boolean compareTwoObjects = time1.calculateSeconds() >= time2.calculateSeconds();
+        System.out.println("Количество секунд в объекте №1 больше или равно, чем в объекте №2: " + compareTwoObjects);
 
         //часов, минут, секунд в объекте
         Time time3 = new Time(15828);
