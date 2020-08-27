@@ -1,11 +1,12 @@
 package taskAirline;
 
+
 public class Airline {
     public String destination;
     public int flightNumber;
     public String airplaneType;
     public double departureTime;
-    public String daysOfWeek;
+    public String dayOfWeek;
 
 
     public String getDestination() {
@@ -40,44 +41,44 @@ public class Airline {
         this.departureTime = departureTime;
     }
 
-    public String getDaysOfWeek() {
-        return daysOfWeek;
+    public String getDayOfWeek() {
+        return dayOfWeek;
     }
 
-    public void setDaysOfWeek(String daysOfWeek) {
-        this.daysOfWeek = daysOfWeek;
+    public void setDayOfWeek(String dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     //конструктор
-    public Airline(String destination, int flightNumber, String airplaneType, double departureTime, String daysOfWeek) {
+    public Airline(String destination, int flightNumber, String airplaneType, double departureTime, String dayOfWeek) {
         this.destination = destination;
         this.flightNumber = flightNumber;
         this.airplaneType = airplaneType;
         this.departureTime = departureTime;
-        this.daysOfWeek = daysOfWeek;
+        this.dayOfWeek = dayOfWeek;
     }
 
     // 1. Вывод списка рейсов для заданного пункта назначения
-    public void printFlightsForDestination(String destination) {
+    public void printFlightsForDestination() {
 
-        if (destination == getDestination()) {
-            System.out.println("Destination: " + getDestination() + " |" + " Flight number: " + getFlightNumber() + " |" + " Airplane type: " + getAirplaneType() + " |" + " Departure time: " + getDepartureTime() + " |" + " Day of week: " + getDaysOfWeek());
+        if (destination == "Moscow") {
+            System.out.println("Destination: " + getDestination() + " |" + " Flight number: " + getFlightNumber() + " |" + " Airplane type: " + getAirplaneType() + " |" + " Departure time: " + getDepartureTime() + " |" + " Day of week: " + getDayOfWeek());
             System.out.println();
         }
     }
 
     // 2. Вывод списка рейсов для заданного дня недели
-    public void printFlightsForTheDay(String daysOfWeek) {
-        if (daysOfWeek == getDaysOfWeek()) {
-            System.out.println("Destination: " + getDestination() + " |" + " Flight number: " + getFlightNumber() + " |" + " Airplane type: " + getAirplaneType() + " |" + " Departure time: " + getDepartureTime() + " |" + " Day of week: " + getDaysOfWeek());
+    public void printFlightsForTheDay() {
+        if (dayOfWeek == "Sunday") {
+            System.out.println("Destination: " + getDestination() + " |" + " Flight number: " + getFlightNumber() + " |" + " Airplane type: " + getAirplaneType() + " |" + " Departure time: " + getDepartureTime() + " |" + " Day of week: " + getDayOfWeek());
             System.out.println();
         }
     }
 
     // 3. Вывод списка рейсов для заданного дня недели, время вылета которых больше заданного
-    public void printFlightsForTheDayAndTime(String daysOfWeek, double departureTime) {
-        if (daysOfWeek == getDaysOfWeek() && getDepartureTime() > departureTime) {
-            System.out.println("Destination: " + getDestination() + " |" + " Flight number: " + getFlightNumber() + " |" + " Airplane type: " + getAirplaneType() + " |" + " Departure time: " + getDepartureTime() + " |" + " Day of week: " + getDaysOfWeek());
+    public void printFlightsForTheDayAndTime() {
+        if (dayOfWeek == "Sunday" && departureTime > 11.00) {
+            System.out.println("Destination: " + getDestination() + " |" + " Flight number: " + getFlightNumber() + " |" + " Airplane type: " + getAirplaneType() + " |" + " Departure time: " + getDepartureTime() + " |" + " Day of week: " + getDayOfWeek());
             System.out.println();
         }
     }
@@ -93,19 +94,26 @@ public class Airline {
         // вывод №1
         System.out.println("Рейсы для заданного пункта назначения:");
         for (int i = 0; i < airline.length; i++) {
-            airline[i].printFlightsForDestination("Tbilisi");
+            airline[i].printFlightsForDestination();
         }
 
         // вывод №2
         System.out.println("Рейсы для заданного дня недели:");
         for (int i = 0; i < airline.length; i++) {
-            airline[i].printFlightsForTheDay("Friday");
+            airline[i].printFlightsForTheDay();
         }
 
         // вывод №3
         System.out.println("Рейсы для заданного дня недели, время вылета для которых больше заданного:");
         for (int i = 0; i < airline.length; i++) {
-            airline[i].printFlightsForTheDayAndTime("Sunday", 16.00);
+            airline[i].printFlightsForTheDayAndTime();
         }
     }
 }
+
+
+
+
+
+
+
