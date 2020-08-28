@@ -1,41 +1,72 @@
-package oop.tasks.task2;
+package task2;
 
 public class Atm {
-    public int notes20; //сумма денег в банкомате номиналом 20
-    public int notes50; //сумма денег в банкомате номиналом 50
-    public int notes100; //сумма денег в банкомате номиналом 100
-    public int allCash; // все деньги в банкомате
-    public int clientCash = 2330; //сумма денег, которую хочет снять клиент
+    public int numberOfNotes20; //количество купюр в банкомате номиналом 20
+    public int numberOfNotes50; //количество купюр в банкомате номиналом 50
+    public int numberOfNotes100; //количество купюр в банкомате номиналом 100
 
-    public Atm(int notes20, int notes50, int notes100) {
-        this.notes20 = notes20;
-        this.notes50 = notes50;
-        this.notes100 = notes100;
-    }
-    public void addCashToAtm() {
-        System.out.println("В банкомате денег: " + (allCash += notes20 * 20 + notes50 * 50 + notes100 * 100) + " рублей");
+    //конструктор
+    public Atm(int numberOfNotes20, int numberOfNotes50, int numberOfNotes100) {
+        this.numberOfNotes20 = numberOfNotes20;
+        this.numberOfNotes50 = numberOfNotes50;
+        this.numberOfNotes100 = numberOfNotes100;
     }
 
-    int numberOf100 = clientCash / 100; //количество купюр номиналом 20
-    int numberOf50 = (clientCash - (numberOf100 * 100)) / 50; //количество купюр номиналом 50
-    int numberOf20 = (clientCash - (numberOf50 * 100) - (numberOf50 * 50)) / 20; //количество купюр номиналом 20
+    //геттеры, сеттеры
+    public int getNumberOfNotes20() {
+        return numberOfNotes20;
+    }
 
-    public void SuccessfulOperation() {
-        boolean result = (clientCash <=19) && (clientCash <= allCash) && (clientCash > 0);
+    public void setNumberOfNotes20(int numberOfNotes20) {
+        this.numberOfNotes20 = numberOfNotes20;
+    }
+
+    public int getNumberOfNotes50() {
+        return numberOfNotes50;
+    }
+
+    public void setNumberOfNotes50(int numberOfNotes50) {
+        this.numberOfNotes50 = numberOfNotes50;
+    }
+
+    public int getNumberOfNotes100() {
+        return numberOfNotes100;
+    }
+
+    public void setNumberOfNotes100(int numberOfNotes100) {
+        this.numberOfNotes100 = numberOfNotes100;
+    }
+
+    //добавление денег в банкомат
+    public int addingMoneyToAtm(int numberOfNotes20, int numberOfNotes50, int numberOfNotes100) {
+        return getNumberOfNotes20() * 20 + getNumberOfNotes50() * 50 + getNumberOfNotes100() * 100;
+    }
+
+
+    //сумма денег, которую хочет снять клиент
+    public int clientCash;
+
+    //геттер, сеттер
+    public int getClientCash() {
+        return clientCash;
+    }
+
+    public void setClientCash(int clientCash) {
+        this.clientCash = clientCash;
+    }
+
+    //операция удалась или нет
+    public void resultOfOperation(int clientCash) {
+        boolean result = clientCash % 10 != 0 && clientCash >= 20 && clientCash <= getNumberOfNotes20() * 20 + getNumberOfNotes50() * 50 + getNumberOfNotes100() * 100;
         System.out.println("Операция прошла успешно: " + result);
     }
 
-    public void withdrawMoney() {
-        if (clientCash > allCash) {
-            System.out.println("Невозможно снять " + clientCash + " рублей");
-        } else if ((clientCash - (numberOf100 * 100) - (numberOf50 * 50) - (numberOf20 * 20)) <= 19) {
-            System.out.println("В банкомате нет нужных купюр. Введите другую сумму.");
-        } else if (clientCash < allCash && clientCash > 0 && (numberOf100 != 0) && (numberOf50 == 0) && (numberOf20 == 0)) {
-            System.out.println("Возьмите деньги: " + numberOf100 + " ед. по 100 рублей");
-        } else if (clientCash < allCash && clientCash > 0 && (numberOf100 != 0) && (numberOf50 != 0) && (numberOf20 == 0)) {
-            System.out.println("Возьмите деньги: " + numberOf100 + " ед. по 100 рублей, " + numberOf50 + " ед. по 50 рублей");
-        } else {
-            System.out.println("Возьмите деньги: " + numberOf100 + " ед. по 100 рублей, " + numberOf50 + " ед. по 50 рублей, " + ((clientCash - (numberOf50 * 50)-(numberOf20 * 20)) / 20) + " ед. по 20 рублей");
+    //снятие денег по номиналам
+    public void printNominalOfNotes(int clientCash) {
+        if (clientCash % 10 != 0) {
+            System.out.println("Введите другую сумму");
+        } else if (clientCash >= 20 && clientCash <= getNumberOfNotes20() * 20 + getNumberOfNotes50() * 50 + getNumberOfNotes100() * 100) {
+            System.out.println("Возьмите деньги: " + clientCash / 100 + " ед. по 100 рублей, " + (clientCash % 100 / 50) + " ед. по 50 рублей, " + (clientCash % 100 % 50 / 20) + " ед. по 20 рублей");
         }
     }
 }
