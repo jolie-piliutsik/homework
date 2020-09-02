@@ -18,12 +18,9 @@ public class Circle implements Shape {
         return radius * 2 * Math.PI;
     }
 
-
     public static void main(String[] args) {
-        Circle circleRunner = new Circle(10);
-        System.out.println("Площадь круга: " + circleRunner.getArea());
-        System.out.println("Периметр круга: " + circleRunner.getPerimeter());
+        Shape circle = new Circle(2);
+        System.out.println("Площадь круга: " + circle.getArea());
+        System.out.println("Периметр круга: " + circle.getPerimeter());
     }
-
 }
-

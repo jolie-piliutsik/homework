@@ -20,8 +20,8 @@ public class Square implements Shape {
     }
 
     public static void main(String[] args) {
-        Square squareRunner = new Square(2.5);
-        System.out.println("Площадь квадрата: " + squareRunner.getArea());
-        System.out.println("Периметр квадрата: " + squareRunner.getPerimeter());
+        Shape square = new Square(2.5);
+        System.out.println("Площадь квадрата: " + square.getArea());
+        System.out.println("Периметр квадрата: " + square.getPerimeter());
     }
 }
